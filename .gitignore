@@ -1,4 +1,11 @@
+# env
 .env
 env
 env/
 env/*
+
+# db
+blog.db
+blog.db-journal
+blog.db-shm
+blog.db-wal
