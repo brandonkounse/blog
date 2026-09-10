@@ -5,6 +5,10 @@ import (
 	"net/http"
 )
 
+type Post struct {
+	Body string
+}
+
 func Home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
@@ -14,5 +18,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl.Execute(w, nil)
+	post := Post{Body: "This is an example test body!"}
+
+	tmpl.Execute(w, post)
 }
