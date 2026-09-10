@@ -17,7 +17,7 @@ func main() {
 	// mux setup
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/", Home)
+	mux.HandleFunc("/", Home(store))
 
 	fileServer := http.FileServer(http.Dir("assets/"))
 
