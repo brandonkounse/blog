@@ -3,10 +3,12 @@ package main
 import (
 	"html/template"
 	"net/http"
+	"time"
 )
 
 type Post struct {
 	Body string
+	Date time.Time
 }
 
 func Home(w http.ResponseWriter, r *http.Request) {
