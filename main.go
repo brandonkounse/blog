@@ -3,9 +3,18 @@ package main
 import (
 	"log"
 	"net/http"
+
+	"github.com/brandonkounse/blog/db"
+	_ "modernc.org/sqlite"
 )
 
 func main() {
+	// db setup
+	store := db.Setup()
+	defer store.DB.Close()
+	store.CreateTablePosts()
+
+	// mux setup
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", Home)
