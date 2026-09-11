@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Post - bk.dev</title>
+</head>
+<body>
+   <form action="/admin/new" method="post">
+    <div>
+        <label>Title:</label><br>
+        <input type="text" name="title" required>
+    </div>
+    <div>
+        <label>Category:</label><br>
+        <input type="text" name="category" required>
+    </div>
+    <div>
+        <label>Content (Markdown/Text):</label><br>
+        <textarea name="content" rows="15" cols="15" required></textarea>
+    </div>
+    <button type="submit">Publish Post</button>
+   </form> 
+</body>
+</html>
