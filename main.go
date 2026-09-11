@@ -18,10 +18,11 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", Home(store))
+	mux.HandleFunc("/admin/new", AdminNew(store))
 
-	fileServer := http.FileServer(http.Dir("assets/"))
+	fileServer := http.FileServer(http.Dir("/assets/"))
 
-	mux.Handle("assets/", http.StripPrefix("assets/", fileServer))
+	mux.Handle("assets/", http.StripPrefix("/assets/", fileServer))
 
 	log.Print("listening on :8080")
 
