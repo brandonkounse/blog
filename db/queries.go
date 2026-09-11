@@ -1,6 +1,7 @@
 package db
 
 import (
+	"database/sql"
 	"log"
 	"time"
 )
@@ -9,7 +10,7 @@ type Post struct {
 	Title       string
 	Content     string
 	DateCreated time.Time
-	DateUpdated time.Time
+	DateUpdated sql.NullTime
 	Category    string
 }
 
@@ -53,3 +54,15 @@ func (s *Store) GetNewestPost() (Post, error) {
 
 	return post, nil
 }
+
+func (s *Store) InsertPost(title, content, category string) error {
+	query := `
+	INSERT INTO posts (title, content, category)
+	VALUES (?, ?, ?);	
+	`
+
+	_, err := s.DB.Exec(query, title, content, category)
+	return err
+}
+
+// TODO - return key as well for future edits and updates
